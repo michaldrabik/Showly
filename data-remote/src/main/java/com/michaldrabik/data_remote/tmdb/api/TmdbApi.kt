@@ -105,4 +105,7 @@ internal class TmdbApi(
     } catch (error: Throwable) {
       TmdbImages.EMPTY
     }
+
+  override suspend fun fetchMovieRelease(imdbId: Long) =
+    service.fetchMovieRelease(imdbId)
 }

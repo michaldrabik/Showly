@@ -81,6 +81,7 @@ import com.michaldrabik.ui_show.views.AddToShowsButton
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import java.util.Locale.ENGLISH
+import java.util.Locale.ROOT
 
 @SuppressLint("SetTextI18n", "DefaultLocale", "SourceLockedOrientationActivity")
 @AndroidEntryPoint
@@ -186,6 +187,12 @@ class ShowDetailsFragment : BaseFragment<ShowDetailsViewModel>(R.layout.fragment
       is Finish -> requireActivity().onBackPressed()
       is RemoveFromTrakt -> openRemoveTraktSheet(event)
     }
+  }
+
+  private fun getFlagEmoji(countryCode: String?): String {
+    if (countryCode == null || countryCode.length != 2) return ""
+    val codePoints = countryCode.uppercase(ROOT).map { 127397 + it.code }
+    return String(codePoints.toIntArray(), 0, codePoints.size)
   }
 
   private fun render(uiState: ShowDetailsUiState) {
@@ -295,25 +302,21 @@ class ShowDetailsFragment : BaseFragment<ShowDetailsViewModel>(R.layout.fragment
 
   private fun renderExtraInfo(show: Show) {
     val year = if (show.year > 0) String.format(ENGLISH, "%d", show.year) else ""
-    val country = if (show.country.isNotBlank()) String.format(ENGLISH, "(%s)", show.country) else ""
+    val country = if (show.country.isNotBlank()) String.format(ENGLISH, "%s", getFlagEmoji(show.country)) else ""
     val genres = show.genres
       .take(5)
       .mapNotNull { Genre.fromSlug(it) }
       .joinToString(", ") { getString(it.displayName) }
 
-    var extraInfoText = getString(
+    val extraInfoText = getString(
       R.string.textShowExtraInfo,
       show.network,
       year,
-      country.uppercase(),
+      country,
       "⏲ ${show.runtime}",
       getString(R.string.textMinutesShort),
       genres,
     )
-
-    if (genres.isEmpty()) {
-      extraInfoText = extraInfoText.trim().removeSuffix("|")
-    }
 
     binding.showDetailsExtraInfo.text = extraInfoText
   }

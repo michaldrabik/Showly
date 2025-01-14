@@ -11,7 +11,10 @@
   <string name="textMovieYouMayAlsoLike">You may also like</string>
   <string name="textMovieCollections">Collections</string>
 
-  <string name="textMovieExtraInfo" translatable="false">%s %s | %s %s | %s</string>
+  <string name="textMovieReleaseDate" translatable="false">%s %s |\u00A0</string>
+  <string name="textMovieReleaseDateSame" translatable="false">%s %s/%s |\u00A0</string>
+  <string name="textMovieReleaseDateMulti" translatable="false">%s %s, %s %s |\u00A0</string>
+  <string name="textMovieExtraInfo" translatable="false">%s%s %s | %s</string>
 
   <string name="textMovieManageLists">Manage Lists</string>
   <string name="textMovieManageListsCount">Manage Lists (%d)</string>

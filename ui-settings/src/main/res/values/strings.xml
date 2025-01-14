@@ -31,7 +31,7 @@
   <string name="textSettingsWidgetsTransparencyTitle">Background</string>
   <string name="textSettingsWidgetsTransparencySummary">Set level of widgets background transparency.</string>
   <string name="textSettingsMyShowsCountryTitle">Region</string>
-  <string name="textSettingsMyShowsCountrySummary">Select region to use with streaming services data.</string>
+  <string name="textSettingsMyShowsCountrySummary">Select region to use with streaming services data and movie release dates.</string>
   <string name="textSettingsMyShowsLanguageTitle">Language</string>
   <string name="textSettingsMyShowsLanguageSummary">Descriptions and titles will be translated when available. App will restart.</string>
   <string name="textSettingsDateFormatTitle">Date / Time Format</string>
