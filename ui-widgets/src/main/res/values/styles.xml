@@ -9,11 +9,11 @@
     <item name="colorWidgetBackground25">#41121212</item>
     <item name="colorWidgetBackground0">#00121212</item>
     <item name="android:textColorPrimary">@color/colorWhite</item>
-    <item name="android:textColorSecondary">@color/colorGrayLight</item>
+    <item name="android:textColorSecondary">#D1D1D1</item>
     <item name="colorPlaceholderIcon">#6A6A6A</item>
     <item name="colorPlaceholderStroke">#6A6A6A</item>
-    <item name="colorAccent">#F44336</item>
-    <item name="colorBadgeBackground">@color/colorGrayDark</item>
+    <item name="colorAccent">@android:color/system_accent1_300</item>
+    <item name="colorBadgeBackground">@android:color/system_accent1_600</item>
   </style>
 
   <style name="AppTheme.Widget.Light" parent="AppTheme">

@@ -46,8 +46,8 @@
     <item name="colorSeparator">@color/colorGrayDark</item>
     <item name="colorChipButtonStroke">#66AAAAAA</item>
     <item name="colorCardBackground">#282828</item>
-    <item name="colorBadgeBackground">@color/colorGrayDark</item>
     <item name="colorSheetBackground">@color/colorPrimary</item>
+    <item name="colorBadgeBackground">@android:color/system_accent1_700</item>
     <item name="colorWidgetStatusBackground">@color/colorBlackTranslucent</item>
   </style>
 
@@ -307,7 +307,7 @@
 
   <style name="ShowlySwitch.Overlay" parent="">
     <item name="colorPrimary">@color/colorAccent</item>
-    <item name="colorPrimaryContainer">#4DF44336</item>
+    <item name="colorPrimaryContainer">@android:color/system_accent1_600</item>
   </style>
 
   <style name="ShowlyChip" parent="Widget.Material3.Chip.Suggestion">

@@ -4,7 +4,7 @@
 
   <color name="colorPrimary">#222327</color>
   <color name="colorPrimaryDark">#121212</color>
-  <color name="colorAccent">#F44336</color>
+  <color name="colorAccent">@android:color/system_accent1_300</color>
   <color name="colorError">#F44336</color>
 
   <color name="colorTransparent">#00000000</color>
