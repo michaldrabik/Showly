@@ -282,6 +282,20 @@
 
         </FrameLayout>
 
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+
+          <com.google.android.material.chip.Chip
+              android:id="@+id/episodeDetailsLink"
+              style="@style/ShowlyChip.Button"
+              android:text="@string/textLink"
+              app:chipIcon="@drawable/ic_link"
+              />
+
+        </FrameLayout>
+
       </LinearLayout>
 
       <TextView
