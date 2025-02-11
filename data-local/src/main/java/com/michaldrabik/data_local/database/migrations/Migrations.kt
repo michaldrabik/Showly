@@ -5,7 +5,7 @@ import android.content.Context.MODE_PRIVATE
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
-const val DATABASE_VERSION = 41
+const val DATABASE_VERSION = 42
 const val DATABASE_NAME = "SHOWLY2_DB_2"
 
 class Migrations(
@@ -778,47 +778,56 @@ class Migrations(
     }
   }
 
-  fun getAll() =
-    listOf(
-      migration2,
-      migration3,
-      migration4,
-      migration5,
-      migration6,
-      migration7,
-      migration8,
-      migration9,
-      migration10,
-      migration11,
-      migration12,
-      migration13,
-      migration14,
-      migration15,
-      migration16,
-      migration17,
-      migration18,
-      migration19,
-      migration20,
-      migration21,
-      migration22,
-      migration23,
-      migration24,
-      migration25,
-      migration26,
-      migration27,
-      migration28,
-      migration29,
-      migration30,
-      migration31,
-      migration32,
-      migration33,
-      migration34,
-      migration35,
-      migration36,
-      migration37,
-      migration38,
-      migration39,
-      migration40,
-      migration41,
-    )
+  private val migration42 = object : Migration(41, 42) {
+    override fun migrate(database: SupportSQLiteDatabase) {
+      with(database) {
+        execSQL("ALTER TABLE movies ADD COLUMN original_release TEXT NOT NULL DEFAULT ''")
+        execSQL("ALTER TABLE movies ADD COLUMN current_country TEXT NOT NULL DEFAULT ''")
+      }
+    }
+  }
+
+  fun getAll() = listOf(
+    migration2,
+    migration3,
+    migration4,
+    migration5,
+    migration6,
+    migration7,
+    migration8,
+    migration9,
+    migration10,
+    migration11,
+    migration12,
+    migration13,
+    migration14,
+    migration15,
+    migration16,
+    migration17,
+    migration18,
+    migration19,
+    migration20,
+    migration21,
+    migration22,
+    migration23,
+    migration24,
+    migration25,
+    migration26,
+    migration27,
+    migration28,
+    migration29,
+    migration30,
+    migration31,
+    migration32,
+    migration33,
+    migration34,
+    migration35,
+    migration36,
+    migration37,
+    migration38,
+    migration39,
+    migration40,
+    migration41,
+    migration42
+  )
 }
