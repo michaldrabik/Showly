@@ -1,5 +1,6 @@
 package com.michaldrabik.data_remote.tmdb
 
+import com.michaldrabik.data_remote.tmdb.model.Releases
 import com.michaldrabik.data_remote.tmdb.model.TmdbImage
 import com.michaldrabik.data_remote.tmdb.model.TmdbImages
 import com.michaldrabik.data_remote.tmdb.model.TmdbPerson
@@ -40,4 +41,6 @@ interface TmdbRemoteDataSource {
   suspend fun fetchPersonTranslations(id: Long): Map<String, TmdbTranslation.Data>
 
   suspend fun fetchPersonImages(tmdbId: Long): TmdbImages
+
+  suspend fun fetchMovieRelease(tmdbId: Long): Releases
 }

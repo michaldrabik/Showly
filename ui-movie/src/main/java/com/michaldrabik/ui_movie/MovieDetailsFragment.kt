@@ -88,7 +88,9 @@ import com.michaldrabik.ui_navigation.java.NavigationArgs.ARG_TYPE
 import com.michaldrabik.ui_navigation.java.NavigationArgs.REQUEST_MANAGE_LISTS
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
+import java.time.LocalDate
 import java.time.ZoneOffset.UTC
+import java.time.format.DateTimeFormatter
 import java.util.Locale.ENGLISH
 import java.util.Locale.ROOT
 
@@ -179,6 +181,20 @@ class MovieDetailsFragment : BaseFragment<MovieDetailsViewModel>(R.layout.fragme
         (movieDetailsBackArrow.layoutParams as ViewGroup.MarginLayoutParams).updateMargins(top = inset.top)
       }
     }
+  }
+
+  private fun formatDate(date: LocalDate?, format:  DateTimeFormatter?, year: Int): String {
+    return when {
+      date != null -> String.format(ENGLISH, "%s", format?.format(date)?.capitalizeWords())
+      year > 0 -> year.toString()
+      else -> ""
+    }
+  }
+
+  private fun getFlagEmoji(countryCode: String?): String {
+    if (countryCode == null || countryCode.length != 2) return ""
+    val codePoints = countryCode.uppercase(ROOT).map { 127397 + it.code }
+    return String(codePoints.toIntArray(), 0, codePoints.size)
   }
 
   private fun render(uiState: MovieDetailsUiState) {
@@ -288,29 +304,31 @@ class MovieDetailsFragment : BaseFragment<MovieDetailsViewModel>(R.layout.fragme
     }
   }
 
-  private fun renderExtraInfo(
-    movie: Movie,
-    meta: MovieDetailsMeta?,
-  ) {
-    val country = if (movie.country.isNotBlank()) String.format(ENGLISH, "(%s)", movie.country) else ""
-    val releaseDate = when {
-      movie.released != null -> String.format(
-        ENGLISH,
-        "%s",
-        meta?.dateFormat?.format(movie.released)?.capitalizeWords(),
-      )
-      movie.year > 0 -> movie.year.toString()
-      else -> ""
-    }
+  private fun renderExtraInfo(movie: Movie, meta: MovieDetailsMeta?) {
     val genres = movie.genres
       .take(5)
       .mapNotNull { Genre.fromSlug(it) }
       .joinToString(", ") { getString(it.displayName) }
 
+    val releaseDate = formatDate(movie.released, meta?.dateFormat, movie.year)
+    val originalRelease = formatDate(movie.originalRelease, meta?.dateFormat, movie.year)
+
+    val country = if (movie.country.isNotBlank()) getFlagEmoji(movie.country) else ""
+    val currentCountry = if (movie.currentCountry?.isNotBlank() == true) getFlagEmoji(movie.currentCountry) else ""
+
+    val releaseDateText: String = when {
+      movie.released == movie.originalRelease && movie.country != movie.currentCountry && movie.currentCountry != null ->
+        getString(R.string.textMovieReleaseDateSame, originalRelease, country, currentCountry)
+      movie.released != movie.originalRelease && movie.released != null ->
+        getString(R.string.textMovieReleaseDateMulti, releaseDate, currentCountry, originalRelease, country)
+      (movie.country == movie.currentCountry || movie.currentCountry == null) && movie.originalRelease != null ->
+        getString(R.string.textMovieReleaseDate, originalRelease, country)
+      else -> ""
+    }
+
     var extraInfoText = getString(
       R.string.textMovieExtraInfo,
-      releaseDate,
-      country.uppercase(ROOT),
+      releaseDateText,
       "⏲ ${movie.runtime}",
       getString(R.string.textMinutesShort),
       genres,

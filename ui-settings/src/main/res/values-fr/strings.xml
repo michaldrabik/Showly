@@ -30,7 +30,7 @@
   <string name="textSettingsWidgetsTransparencyTitle">Fond</string>
   <string name="textSettingsWidgetsTransparencySummary">Définir le niveau de transparence du fond des widgets.</string>
   <string name="textSettingsMyShowsCountryTitle">Région</string>
-  <string name="textSettingsMyShowsCountrySummary">Sélectionnez la région à utiliser avec les données des services de streaming.</string>
+  <string name="textSettingsMyShowsCountrySummary">Sélectionnez la région à utiliser avec les données des services de streaming et les dates de sortie des films.</string>
   <string name="textSettingsMyShowsLanguageTitle">Langue</string>
   <string name="textSettingsMyShowsLanguageSummary">Les titres et descriptions seront traduits quand ils seront disponibles. L\'application va redémarrer.</string>
   <string name="textSettingsDateFormatTitle">Format date / heure</string>
