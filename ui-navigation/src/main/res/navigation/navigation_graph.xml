@@ -337,6 +337,11 @@
       app:launchSingleTop="true"
       />
     <action
+      android:id="@+id/actionEpisodeDetailsToLink"
+        app:destination="@+id/episodeLinksDialog"
+        app:launchSingleTop="true"
+      />
+    <action
       android:id="@+id/actionShowDetailsFragmentToRemoveTraktHidden"
       app:destination="@id/removeTraktHiddenDialog"
       app:launchSingleTop="true"
@@ -931,6 +936,11 @@
       app:destination="@id/ratingDialog"
       app:launchSingleTop="true"
       />
+    <action
+      android:id="@+id/actionEpisodeDetailsDialogToLink"
+      app:destination="@+id/episodeLinksDialog"
+      app:launchSingleTop="true"
+      />
   </dialog>
 
   <dialog
@@ -997,6 +1007,12 @@
     android:id="@+id/personLinksDialog"
     android:name="com.michaldrabik.ui_people.details.links.PersonLinksBottomSheet"
     android:label="dialogPersonLinks"
+    />
+
+  <dialog
+    android:id="@+id/episodeLinksDialog"
+    android:name="com.michaldrabik.ui_episodes.details.links.EpisodeLinksBottomSheet"
+    android:label="dialogEpisodeLinks"
     />
 
   <dialog

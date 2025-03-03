@@ -8,6 +8,7 @@ object NavigationArgs {
   const val ARG_COMMENT_ID = "ARG_COMMENT_ID"
   const val ARG_COLLECTION_ID = "ARG_COLLECTION_ID"
   const val ARG_PERSON = "ARG_PERSON"
+  const val ARG_EPISODE_LINK = "ARG_EPISODE_LINK"
   const val ARG_PERSON_ARGS = "ARG_PERSON_ARGS"
   const val ARG_OPTIONS = "ARG_OPTIONS"
   const val ARG_TITLE = "ARG_TITLE"
